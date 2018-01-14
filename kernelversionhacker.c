@@ -188,7 +188,6 @@ int updateVersionString(char *newVersionString) {
     
     char *sectName;
 #ifdef __arm__
-    
     /* iOS 4 and below have the kernel version text in __TEXT_cstring */
     if (osRelease <= 11) {
         sectName = "__cstring";
