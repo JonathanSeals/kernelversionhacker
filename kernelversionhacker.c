@@ -54,8 +54,6 @@ static vm_address_t get_kernel_base(task_t kernel_task, uint64_t osRelease) {
     addr = KERNEL_SEARCH_ADDRESS_IOS;
 #endif
     
-    int found=0;
-    
     while (1) {
         
         char *buf;
