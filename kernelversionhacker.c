@@ -109,10 +109,7 @@ static vm_address_t get_kernel_baseios9plus(mach_port_t kernel_task, uint64_t os
     /* This function shouldn't be getting called on iOS 8 or lower */
     else return -1;
     
-    int found=0;
-    
     while (1) {
-        
         char *buf;
         mach_msg_type_number_t sz = 0;
         kern_return_t ret = vm_read(kernel_task, addr, 0x200, (vm_offset_t*)&buf, &sz);
@@ -331,6 +328,7 @@ retry:
             goto retry;
         }
     }
+    
     else {
         if (strcmp(u.version, DEFAULT_VERSION_STRING)) {
             memset(&u, 0x0, sizeof(u));
