@@ -274,7 +274,7 @@ int updateVersionString(char *newVersionString) {
         return -1;
     }
     else {
-        memset(&u, 0x0, sizeof(u));
+        memset(&u, 0x0, sizeof(struct utsname));
         uname(&u);
         return 0;
     }
@@ -314,7 +314,7 @@ retry:
         ret = updateVersionString(argv[1]);
     else ret = updateVersionString(DEFAULT_VERSION_STRING);
     
-    memset(&u, 0x0, sizeof(u));
+    memset(&u, 0x0, sizeof(struct utsname));
     
     if (ret) {
         return -1;
@@ -324,14 +324,14 @@ retry:
 
     if (argc >= 2) {
         if (strcmp(u.version, argv[1])) {
-            memset(&u, 0x0, sizeof(u));
+            memset(&u, 0x0, sizeof(struct utsname));
             goto retry;
         }
     }
     
     else {
         if (strcmp(u.version, DEFAULT_VERSION_STRING)) {
-            memset(&u, 0x0, sizeof(u));
+            memset(&u, 0x0, sizeof(struct utsname));
             goto retry;
         }
     }
